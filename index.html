@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Mi intento de página con Bootstrap </title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style>
+		body {
+			background-color: #F7F7F7;
+		}
+
+		.header {
+			background-color: #292C37;
+			color: #fff;
+			padding: 20px;
+			margin-bottom: 30px;
+		}
+
+		.content {
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+		}
+
+		.footer {
+			background-color: #292C37;
+			color: #fff;
+			padding: 10px;
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+		}
+
+		.image {
+			text-align: center;
+			position: relative;
+		}
+
+		.image img {
+			max-width: 100%;
+			max-height: 100%;
+		}
+
+		.image .versus {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-size: 36px;
+			font-weight: bold;
+			color: #292C37;
+		}
+
+		.btn-winner {
+			background-color: #292C37;
+			color: #fff;
+			border: none;
+			padding: 10px 20px;
+			border-radius: 5px;
+			margin-top: 20px;
+			cursor: pointer;
+		}
+
+		.btn-winner:hover {
+			background-color: #1F2230;
+		}
+
+        .modal-content {
+			background-color: #292C37;
+			color: #fff;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+		}
+
+		.modal-content img {
+			max-width: 100%;
+			max-height: 100%;
+		}
+
+	</style>
+
+    <script>
+        $(document).ready(function() {
+            // Al hacer clic en el botón "Mostrar ganador"
+            $(".btn-winner").click(function() {
+                // Obtener un número aleatorio (1 o 2) para seleccionar una de las dos imágenes
+                var random = Math.floor(Math.random() * 2) + 1;
+
+                // Crear la URL de la imagen seleccionada
+                var imgUrl = "https://media.giphy.com/media";
+                var name = "Gato";
+                if (random === 1) {
+                    imgUrl = "https://media.giphy.com/media/47EstTgsR1vpK/giphy.gif";//"https://via.placeholder.com/500x300/FF0000/FFFFFF";
+                    name = "Gato Dark Souls";
+                } else if (random === 2) {
+                    imgUrl = "https://media.giphy.com/media/uELtzAhhqpRKg/giphy.gif";//"https://via.placeholder.com/500x300/0000FF/FFFFFF";
+                    name = "Gato Actor";
+                }
+
+                // Actualizar la imagen y el título de la ventana modal con la imagen seleccionada
+                $(".modal-img").attr("src", imgUrl);
+                $(".modal-title").text("Ganador: Imagen " + random);
+                $(".modal-title").text(name + "!!!");
+
+                // Mostrar la ventana modal
+                $("#myModal").modal();
+            });
+        });
+    </script>
+
+</head>
+<body>
+	<div class="header">
+		<h1>Mi intento de página con Bootstrap - Gatopelea</h1>
+	</div>
+    <h1 style="text-align: center;">¿Qué gato será el ganador del amor del pueblo?</h1>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-6">
+				<h2>Gato Dark Souls</h2>
+                <p>Practica como esquivar los ataques de sus enemigos</p>
+				<div class="image">
+					<img src="https://media.giphy.com/media/47EstTgsR1vpK/giphy.gif" alt="GIF animado 1">
+				</div>
+			</div>
+			<div class="col-md-6">
+				<h2>Gato Actor</h2>
+                <p>Lo preparan para su mejor escena</p>
+				<div class="image">
+					<img src="https://media.giphy.com/media/uELtzAhhqpRKg/giphy.gif" alt="GIF animado 2">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<div class="image">
+					<p class="versus">VS</p>
+				</div>
+				<button class="btn btn-winner">Mostrar ganador</button>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<p>© 2023</p>
+	</div>
+    <!-- Ventana modal para mostrar el ganador -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Contenido de la ventana modal -->
+            <div class="modal-content">
+                <!-- Cabecera de la ventana modal -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Ganador: Imagen 1</h4>
+                </div>
+                <!-- Cuerpo de la ventana modal -->
+                <div class="modal-body">
+                    <img class="modal-img" src="https://media.giphy.com/media/47EstTgsR1vpK/giphy.gif" alt="GIF ganador">
+                </div>
+                <!-- Pie de la ventana modal -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
